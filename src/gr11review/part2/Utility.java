@@ -6,14 +6,27 @@ public class Utility {
   public static String zipzap(String strInput){
     String strSub;
     String strReturn;
+    String strLetter1;
+    String strLetter3;
     int intCount;
+    int intNextCount;
     int intLength;
 
     intLength = strInput.length();
+    intNextCount = 2;
+    strReturn = "";
 
     for(intCount = 0; intCount < intLength; intCount++){
-      
+      intNextCount = intNextCount + 1;
+      strSub = strInput.substring(intCount, intNextCount);
+      strLetter1 = strSub.substring(0 , 1);
+      strLetter3 = strSub.substring(2 , 3);
+      if(strLetter1.equalsIgnoreCase("z") && strLetter3.equalsIgnoreCase("p")){
+        strReturn = strLetter1 + strLetter3;
+      }
     }
+
+    return strReturn;
   }
     
 }
