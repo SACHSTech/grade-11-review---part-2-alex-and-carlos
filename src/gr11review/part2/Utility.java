@@ -1,10 +1,14 @@
 package gr11review.part2;
 import java.io.*;
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException; 
 
 public class Utility{
-  // Create a method that for patterns like "zip" and "zap" in the string -- length-3, starting with 'z' and ending with 'p'. Return a string where for all such words, the middle letter is gone, so "zipXzap" yields "zpXzp".
 
   public static String zipzap(String strInput){
+    // Create a method that for patterns like "zip" and "zap" in the string -- length-3, starting with 'z' and ending with 'p'. Return a string where for all such words, the middle letter is gone, so "zipXzap" yields "zpXzp".
+
     String strSub;
     String strPart;
     String strLetter1;
@@ -37,5 +41,26 @@ public class Utility{
 
     return strReturn;
   }
-    
+  public static String longestWord(String filenametxt){
+    // Write a method longestWord(String filenametxt) such that given the name of a file filenametxt that contains a single word on each line, returns the longest word in the file.
+    File textfile = new File(filenametxt);
+    Scanner reader = new Scanner(textfile);
+
+    String strWord;
+    String strLongest;
+    int intLength;
+    int intLongest;
+
+    while(textfile.hasNextLine()){
+      strWord = reader.nextLine();
+      intLength = strWord.length();
+      if(intLongest < intLength){
+        strLongest = strWord;
+        intLongest = strLongest.length();
+      }
+    }
+    reader.close();
+    return strLongest;
+
+  }
 }
