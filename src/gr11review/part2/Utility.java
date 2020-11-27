@@ -17,6 +17,8 @@ public class Utility{
     intLength = strInput.length();
     intNextCount = 2;
     strReturn = "";
+    strPart = "";
+    strReturn = strInput;
 
     for(intCount = 0; intCount < intLength; intCount++){
       intNextCount = intNextCount + 1;
@@ -25,7 +27,11 @@ public class Utility{
       strLetter3 = strSub.substring(2 , 3);
       if(strLetter1.equalsIgnoreCase("z") && strLetter3.equalsIgnoreCase("p")){
         strPart = strLetter1 + strLetter3;
-        strReturn = strReturn + strPart;
+        strReturn = strReturn.replace(strSub , strPart);
+      }
+     
+      if(intNextCount == intLength){
+        break;
       }
     }
 
