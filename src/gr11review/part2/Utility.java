@@ -1,7 +1,7 @@
 package gr11review.part2;
 
 public class Utility {
-  public static String R7(String strWord) {
+  public static int R7(String strWord) {
     
     String strAll = strWord;
     String strReadAll;
@@ -31,17 +31,17 @@ public class Utility {
         if (Characters >= '0' && Characters <= '9') {
           strChar = Character.toString(Characters);
           strTempChar = strTempChar + strChar;
-        }else if (Characters){
-
-          
-
+        }else if (Characters > '9' || Characters < '0') {
+          intNumbers = Integer.parseInt(strTempChar);
         }
       }
 
+      intCombined = intCombined + intNumbers;
       intCount = intCount + intCountWords;
 
-      if (intCount >= intLength) {
+      if (intCount >= intLength && Characters > '9') {
         intCount--;
+        return intCombined;
         break;
       }
     }
