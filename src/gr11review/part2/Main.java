@@ -13,7 +13,7 @@ public class Main{
 
 
 
-    // use utility.R7 method
+    // use utility.sumNumbers method
    //intCombinedNum = Utility.sumNumbers(strString);
 
     //System.out.println("Output: " + intCombinedNum);
@@ -35,6 +35,7 @@ public class Main{
       System.out.println("Number");
       intNumbers[intCount] = Integer.parseInt(keyboard.readLine());
     }
+
     System.out.println("Alone?");
     intAlone = Integer.parseInt(keyboard.readLine());
 

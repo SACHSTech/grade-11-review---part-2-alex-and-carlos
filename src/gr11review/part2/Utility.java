@@ -123,12 +123,17 @@ public class Utility {
     
     /* Given an integer n, write a method diagonal(int n) that outputs to a text file diagonalOut.txt, a two-dimensional array of size (n×n) populated as follows, with a comma between each number: */
 
-    // The positions on the minor diagonal (from the upper right to the // lower left corner) receive 1 .
+    // The positions on the minor diagonal (from the upper right to the lower left corner) receive 1 .
     // The positions above this diagonal receive 0 .
     // The positions below the diagonal receive 2 .
     // Signature public static void diagonal(int n) 
 
-    TypeWriter 
+    PrintWriter theout = new PrintWriter(new FileWriter("diagonalOut.txt", true));
+
+    String[][] strNum;
+
+    strNum
+    
 
   }
   
