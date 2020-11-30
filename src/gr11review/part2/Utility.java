@@ -5,74 +5,53 @@ public class Utility {
 
     // here is what I'll do: 
     // create a loop that read entire sentence, when it finds a char that is a int, it registers into string variable to create a strings of integers. Then it starts to loop again but begins at the last time it read, if it finds a integer char variable, it'll start to loop and register the char variables behind.
-    
-    String strAll = strWord;
+  
     int intCount;
-    int intTotalChar = strAll.length();
-    int intCounter = 0;
-    int intCounter2 = 0;
-    int intCombined = 0;
-    String strTempChar1;
-    String strTempChar2;
-    String strCombinedChar;
+    int intCount2;
+    int intTotal;
+    int intCombined;
+    String strAll = strWord;
+    String strSub;
+    int intNum;
+    int intNumCombined;
     char Char1;
     char Char2;
-    String strChar1;
-    String strChar2;
 
-    System.out.print("There is a total of: " + intTotalChar + " characters in these string of letters.");
+    intTotal = strAll.length();
 
-    for (intCount = 1; intCount <= intTotalChar; intCount++) {
-      intCount = intCount + intCounter;
-      // clear temporary variables
-      strTempChar1 = "";
-      strTempChar2 = "";
+    for (intCount = 0; intCount <= intTotal; intCount++) {
+      intCount2 = 0;
 
-      Char1 = strAll.charAt(intCount); //String return char
+      Char1 = strAll.charAt(intCount);
 
-      if (Character.isDigit(Char1)) {
-        while (Character.isDigit(Char1)) {
-          intCounter = 1;
+      while (Charactor.isDigit(Char1)) {
+        intCount2++;
 
-          intCounter2 = intCounter + intCount; //1+1 = 2
-          
-          // preregistering the temporary Variables
-          strChar1 = Character.toString(Char1);
-          strTempChar1 = Character.toString(Char1);
+        Char2 = strAll.charAt(intCount + intCount2);
 
-          Char2 = strAll.charAt(intCounter2);
-          strTempChar2 = Character.toString(Char2);
+        if (Character.isDigit(Char2)) {
 
-          System.out.print(strChar1);
+          strSub = strAll.substring(intCount, intCount2);
+          break;
+        }else if (!Character.isDigit(Char2)) {
+          intCount2--;
 
-          while (Character.isDigit(Char2)) {
-            intCounter++;
-
-            intCounter2 = intCounter + intCount;
-
-            Char2 = strAll.charAt(intCounter2);
-            strChar2 = Character.toString(Char2);
-            strTempChar2 = strTempChar2 + strChar2;
-
-            if (Char2 < '0' || Char2 > '9') {
-              intCounter--;
-              break;
-            }
-          }
-          intCount = intCounter2;
-          // combine the temporary variables
-          strCombinedChar = strTempChar1 + strTempChar2;
-          intCombined = Integer.parseInt(strCombinedChar);
-          System.out.println(intCombined);
-
-          if (intCount > intTotalChar) {
-            intCount = intTotalChar;
-            break;
-          }
+          intCount = intCount + intCount2;
+          break;
         }
+        System.out.print(strSub);
+        
       }
+
+
     }
-   return intCombined;
+
   }
-  public static 
+  return intCombined;
+}
+  public static int sumNumbers(String str) {
+    // Given a string, return the sum of the numbers appearing in the string, ignoring all other characters. A number is a series of 1 or more digit chars in a row. (Note: Character.isDigit(char) tests if a char is one of the chars '0', '1', .. '9'. Integer.parseInt(string) converts a string to an int.)
+
+    return 69;
+  }
 }
