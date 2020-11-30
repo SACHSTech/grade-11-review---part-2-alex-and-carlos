@@ -60,7 +60,20 @@ public class Utility {
   return intNumCombined;
   }
   public static String alphaWord(String filenametxt) {
+   // Write a method alphaWord(String filenametxt) such that given the name of a file filenametxt that contains a single word on each line, returns the word that is alphabetically first.
+  
+    // I bring the meme into my work, wtf is wrong with me.
 
-    return "gay";
+    int intLineNum = 0;
+    int intCount;
+
+    BufferedReader fileIn = new BufferedReader(new FileReader("words.txt"));
+
+    while (!fileIn.eof()) {
+      intLineNum++;
+    }
+
+
+    return "Happy";
   }
 }
