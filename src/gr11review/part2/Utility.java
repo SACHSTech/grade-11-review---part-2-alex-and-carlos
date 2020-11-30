@@ -9,7 +9,7 @@ public class Utility {
     int intCount;
     int intCount2 = 0;
     int intTotal;
-    int intCombined = 0;
+
     String strAll = strWord;
     String strSub;
     int intNum = 0;
@@ -18,10 +18,11 @@ public class Utility {
     char Char2;
 
     intTotal = strAll.length();
+    System.out.println("There is " + intTotal + " words in the string.");
 
     for (intCount = 0; intCount <= intTotal; intCount++) {
-
-      intCount = intCount + intCount2;
+      
+      intCount2 = 0;
 
       Char1 = strAll.charAt(intCount);
 
@@ -47,7 +48,7 @@ public class Utility {
         }
       }
 
-      intCombined = intCombined + intNum;
+      intNumCombined = intNumCombined + intNum;
 
       if (intCount > intTotal) {
 
@@ -56,7 +57,7 @@ public class Utility {
       }
 
     }
-  return intCombined;
+  return intNumCombined;
   }
   public static String alphaWord(String filenametxt) {
 

@@ -14,7 +14,7 @@ public class Main{
     strString = keyboard.readLine();
 
     // use utility.R7 method
-    intCombinedNum = Utility.StringCombinedInt(strString);
+    intCombinedNum = Utility.sumNumbers(strString);
 
     System.out.println("Output: " + intCombinedNum);
   }
