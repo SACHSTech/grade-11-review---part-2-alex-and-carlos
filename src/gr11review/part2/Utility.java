@@ -1,12 +1,9 @@
 package gr11review.part2;
 import java.io.*;
-import java.io.File;
-import java.util.Scanner;
-import java.io.FileNotFoundException; 
 
 public class Utility{
-
   public static String zipzap(String strInput){
+
     // Create a method that for patterns like "zip" and "zap" in the string -- length-3, starting with 'z' and ending with 'p'. Return a string where for all such words, the middle letter is gone, so "zipXzap" yields "zpXzp".
 
     String strSub;
@@ -41,26 +38,126 @@ public class Utility{
 
     return strReturn;
   }
-  public static String longestWord(String filenametxt){
-    // Write a method longestWord(String filenametxt) such that given the name of a file filenametxt that contains a single word on each line, returns the longest word in the file.
-    File textfile = new File(filenametxt);
-    Scanner reader = new Scanner(textfile);
 
+  public static String longestWord(String filenametxt) throws IOException{
+    BufferedReader reader = new BufferedReader(new FileReader(filenametxt));
+    // Write a method longestWord(String filenametxt) such that given the name of a file filenametxt that contains a single word on each line, returns the longest word in the file.
+    
     String strWord;
     String strLongest;
     int intLength;
     int intLongest;
 
-    while(textfile.hasNextLine()){
-      strWord = reader.nextLine();
+    intLongest = 0;
+    strLongest = "";
+    strWord = "";
+    intLength = 0;
+    
+    while(strWord != null){
+      strWord = reader.readLine();
       intLength = strWord.length();
       if(intLongest < intLength){
         strLongest = strWord;
         intLongest = strLongest.length();
       }
     }
+
     reader.close();
     return strLongest;
+  }
+  
+  public static int[] tenRun(int[] nums){
+    // For each multiple of 10 in the given array, change all the values following it to be that multiple of 10, until encountering another multiple of 10. So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.
 
+    int intSub;
+    int[] intReturn;
+    int intLength;
+    int intCount;
+    int intCount2;
+    int intTen;
+    int intCheck;
+
+    intLength = nums.length;
+    intCount2 = 0;
+    intReturn = new int[intLength];
+
+    for(intCount = 0; intCount < intLength; intCount++){
+      intSub = nums[intCount];
+      intTen = intSub % 10;
+      if(intTen == 0){
+        intReturn[intCount] = intSub;
+        intCount2 = intCount;
+        intTen = 1;
+        while(intTen != 0){
+          intCount2 = intCount2 + 1;
+          if(intCount2 >= intLength){
+            intCount = intCount2;
+            break;
+          }
+          intCheck = nums[intCount2];
+          intTen = intCheck % 10;
+          if(intTen != 0){
+            intReturn[intCount2] = intSub;
+          }else if(intTen == 0){
+            intCount = intCount2 - 1;
+            break;
+          }
+        }
+      }else{
+        intReturn[intCount] = nums[intCount];
+      }
+    }
+
+    return intReturn;
+  }
+
+  public static boolean linearIn(int[] outer, int[] inner){
+    // Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner appear in outer. The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact that both arrays are already in sorted order.
+    int intCount;
+    int intCountIn;
+    boolean isTrue;
+    int intLengthIn;
+    int intLengthOut;
+    int intIn;
+    int intOut;
+    int[] intCheck;
+
+    intLengthIn = inner.length;
+    intLengthOut = outer.length;
+    intCountIn = 0;
+    intCheck = new int[intLengthIn];
+
+    for(intCount = 0; intCount < intLengthOut; intCount++){
+      intOut = outer[intCount];
+      intIn = inner[intCountIn];
+      if(intIn == intOut){
+        intCheck[intCountIn] = inner[intCountIn];
+        intCountIn = intCountIn + 1;
+      }
+
+      if(intCountIn >= intLengthIn){
+        break;
+      }
+      
+    }
+
+    intCountIn = 0;
+
+    for(intCount = 0; intCount < intLengthIn; intCount++){
+      if(intCheck[intCount] == inner[intCount]){
+        intCountIn = intCountIn + 1;
+      }
+    }
+
+    if(intCountIn == intLengthIn){
+      isTrue = true;
+    }else{
+      isTrue = false;
+    }
+
+    return isTrue;
+  }
+  public static void pascalTri(int i, int j){
+    
   }
 }
