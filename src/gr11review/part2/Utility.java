@@ -7,47 +7,44 @@ public class Utility {
     // create a loop that read entire sentence, when it finds a char that is a int, it registers into string variable to create a strings of integers. Then it starts to loop again but begins at the last time it read, if it finds a integer char variable, it'll start to loop and register the char variables behind.
     
     String strAll = strWord;
-    int intCount = 0;
     int intCountWords;
     int intTotalChar = strAll.length();
     int intCounter = 0;
-    int intNumbers;
+    int intChar1;
+    int intChar2;
     int intCombined = 0;
     String strTempChar;
     String strChar;
-    char Characters;
+    char Char1;
+    char Char2;
+    String strChar1;
+    String strChar2;
 
-    System.out.print(intTotalChar);
+    System.out.print("There is a total of: " + intTotalChar + "characters in the string of lettres.");
 
-    while (intCount != intTotalChar) {
-
-      Characters = strAll.charAt(intCount);
+    for (int intCount = 1; intCount <= intTotalChar; intCount++) {
       
-      while (Characters >= '0' && Characters <= '9') {
-        intCount++;
+      Char1 = strAll.charAt(intCount); //String return char
 
-        strTempChar = Character.toString(Characters);
+      while (Char1 >= '0' && Char1 <= '9') {
+        intCounter = 1;
 
-        intCountWords = intCount + intCounter;
-        Characters = strAll.charAt(intCountWords);
+        int intCounter2 = intCounter + intCount;
+        
+        strChar1 = Character.toString(Char1);
 
-        if (Characters >= '0' && Characters <= '9') {
-          strChar = Character.toString(Characters);
-          strTempChar = strTempChar + strChar;
-        }else if (Characters > '9' || Characters < '0') {
-          intNumbers = Integer.parseInt(strTempChar);
-          intCombined = intCombined + intNumbers;
-          intCount = intCount + intCountWords;
+        strTempChar = Character.toString(Char1);
+        Char2 = strAll.charAt(intCounter2);
+
+        if (Char2 < '0' || Char2 > '9') {
+          intChar1 = Integer.parseInt(strChar1);
+        }else if (Char2 >= '0' && Char2 <= '9') {
+          strChar2 = Character.toString(Char2);
+          str
         }
-        if (intCount >= intTotalChar) {
-          break;
-        }
-      }
-      if (intCount >= intTotalChar) {
-        intCount--;
-        break;
       }
     }
+
    return intCombined;
   }
 }
