@@ -14,12 +14,12 @@ public class Main{
     System.out.println(strOutput);
 
 
-    // strLong = Utility.longestWord("src/gr11review/part2/words.txt");
-    // System.out.println(strLong);
+    strLong = Utility.longestWord("src/gr11review/part2/test.txt");
+    System.out.println(strLong);
 
     // int[] intNum;
     // int[] intOutput;
-     int intCount;
+    int intCount;
     // int intLength;
 
     // System.out.println("How many numbers?");
