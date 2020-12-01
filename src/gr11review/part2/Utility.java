@@ -54,12 +54,12 @@ public class Utility{
     intLength = 0;
     
     while(strWord != null){
-      strWord = reader.readLine();
       intLength = strWord.length();
       if(intLongest < intLength){
         strLongest = strWord;
         intLongest = strLongest.length();
       }
+      strWord = reader.readLine();
     }
 
     reader.close();
