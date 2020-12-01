@@ -157,7 +157,8 @@ public class Utility{
 
     return isTrue;
   }
-  public static void pascalTri(int i, int j){
+  
+  public static void pascalTri(int i, int j) throws IOException{
     // The first row are the numbers in p[0], p[0], p[0],..., p[0]
     // The familiar Pascal triangle is the triangle of numbers with p[0] as vertex and the set of numbers p[0], p[1], p[2], p[3], ..., p[9] as base.
     // Note that p[0] is always 1, and that any other number is obtained by adding two of its neighbours: the one above and the one to its left.
@@ -169,21 +170,46 @@ public class Utility{
     int intCount;
     int intCount2;
     int intAns;
+    int intRow;
+    int intNext;
+    int intPrevAns;
+    int intNumNext;
     int[][] intNumbers;
 
     intAns = 1;
+    intRow = 0;
+    intNext = 1;
+    intPrevAns = 1;
     intNumbers = new int[i][j];
 
     for(intCount = 0; intCount < j; intCount++){
-      intNumbers[0][intCount] = intAns
+      intNumbers[0][intCount] = intAns;
     }
 
     for(intCount = 1; intCount < i; intCount++){
+      intNext = 1;
+      intPrevAns = 1;
       for(intCount2 = 0; intCount2 < j; intCount2++){
-        intNumbers[intCount][intCount2] = intAns;
-
+        intNumNext = intNumbers[intRow][intNext];
+        intAns = intPrevAns + intNumNext;
+        if(intCount2 == 0){
+          intNumbers[intCount][intCount2] = 1;
+        }else{
+          intNumbers[intCount][intCount2] = intAns;
+          intNext = intNext + 1;
+          intPrevAns = intAns;
+        }
       }
+      intRow = intRow + 1;
     }
 
+    for(intCount = 0; intCount < i; intCount++){
+      for(intCount2 = 0; intCount2 < j; intCount2++){
+        Output.print(intNumbers[intCount][intCount2] + ", ");
+      }
+      Output.println("");
+    }
+    Output.close();
   }
+  
 }
