@@ -1,8 +1,5 @@
 package gr11review.part2;
-
 import java.io.*;
-
-import org.graalvm.compiler.core.common.util.TypeWriter;
 
 public class Utility {
   public static int sumNumbers(String strWord) {
@@ -18,37 +15,46 @@ public class Utility {
     int intNum;
     int intTotal;
     String strNum;
+    String strNum2;
 
     intLength = strWord.length();
     intTotal = 0;
     
     for(intCount = 0; intCount < intLength; intCount++){
-      charSub = strWord.charTo(intCount);
+      charSub = strWord.charAt(intCount);
       
-      System.out.print(charSub);
+      isNum = Character.isDigit(charSub);
 
-      if(Chracter.isDigit(charSub) == true){
-        strNum = charSub;
-        for (intCount2 = intCount; intCount2 < intLength; intCount2 ++ ) {
-          charSub2 = strWord.charTo(intCount2);
-          if (Character.isDigit(charSub2) == true){
-            strNum = strNum + charSub2;
-          }else{
+      if(isNum == true){
+        strNum = Character.toString(charSub);
+
+        for (intCount2 = intCount + 1; intCount2 < intLength; intCount2 ++ ) {
+          charSub2 = strWord.charAt(intCount2);
+          isNum = Character.isDigit(charSub2);
+          if (isNum == true){
+            strNum2 = Character.toString(charSub2);
+            strNum = strNum + strNum2;
+            
+          }else if(isNum == false) {
             break;
           }
         }
-        intNum = Integer.parseInt(strNum);
-        System.out.println(intNum);
         
-        intTotal = intTotal + intNum;
-        System.out.println("Total: "  + intTotalotal);
+         intCount = intCount2;
+        
+         intNum = Integer.parseInt(strNum);
+         System.out.println("strNum = " + strNum);
+        
+         intTotal = intTotal + intNum;
+         System.out.println("Total: "  + intTotal);
       }
       
       
     }
     return intTotal;
   }
-  public static String alphaWord(String filenametxt) {
+  
+  public static String alphaWord(String filenametxt) throws IOException {
 
    // Write a method alphaWord(String filenametxt) such that given the name of a file filenametxt that contains a single word on each line, returns the word that is alphabetically first.
   
@@ -58,23 +64,22 @@ public class Utility {
 
     String strWord;
     String strAlpha;
-    int intCount;
     int intCheck;
 
-    intLength = 0;
-    strAlpha = "z";
+    strAlpha = "Lorem";
     strWord = "";
 
     while(strWord != null){
       strWord = fileIn.readLine();
-      intCheck = strAlpha.compareTo(strWord);
-      if(intCheck < 0){
+      if(strWord == null){
+        break;
+      }
+      intCheck = strAlpha.compareToIgnoreCase(strWord);
+      if(intCheck > 0){
         strAlpha = strWord;
       }
+      
     }
-
-    fileIn.close();
-
     return strAlpha;
   }
   public static int[] notAlone(int[] nums, int value) {
@@ -118,19 +123,23 @@ public class Utility {
     
     int intCount;
     int intCombined = 0;
+    int[] intArray = nums;
+    boolean returnTrue;
+    returnTrue = true;
 
     for (intCount = 0; intArray != null; intCount++) {
       intCombined = intCombined + nums[intCount];
-    }
 
-    if (intCombined %2 != 0) {
-      return false;
-    }else if (intCombined %2 == 0) {
-      return true;
+      if (intCombined % 2 != 0) {
+      returnTrue = false;
+      }else if (intCombined % 2 == 0) {
+      returnTrue = true;
+      }
     }
+    return returnTrue;
   }
 
-  public static void diagonal(int n) throws IOException{
+  public static void diagonal(int n) throws IOException {
   // Given an integer n, write a method diagonal(int n) that outputs to a text file diagonalOut.txt, a two-dimensional array of size (n×n) populated as follows, with a comma between each number:
 
   // The positions on the minor diagonal (from the upper right to the lower left corner) receive 1 .
