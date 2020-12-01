@@ -252,4 +252,58 @@ public class Utility{
   Output.close();
 
   }
+
+  public static int sumNumbers(String strWord) {
+
+    // Given a string, return the sum of the numbers appearing in the string, ignoring all other characters. A number is a series of 1 or more digit chars in a row. (Note: Character.isDigit(char) tests if a char is one of the chars '0', '1', .. '9'. Integer.parseInt(string) converts a string to an int.)
+
+    int intCount;
+    int intCount2;
+    int intLength;
+    char charSub;
+    char charSub2;
+    boolean isNum;
+    int intNum;
+    int intTotal;
+    String strNum;
+    String strNum2;
+
+    intLength = strWord.length();
+    intTotal = 0;
+
+    System.out.print(strNum);
+    
+    for(intCount = 0; intCount < intLength; intCount++){
+      charSub = strWord.charAt(intCount);
+      
+      isNum = Character.isDigit(charSub);
+
+      if(isNum == true){
+        strNum = Character.toString(charSub);
+
+        for (intCount2 = intCount + 1; intCount2 < intLength; intCount2 ++ ) {
+          charSub2 = strWord.charAt(intCount2);
+          isNum = Character.isDigit(charSub2);
+          if (isNum == true){
+            strNum2 = Character.toString(charSub2);
+            strNum = strNum + strNum2;
+            
+          }else if(isNum == false) {
+            break;
+          }
+        }
+        
+         intCount = intCount2;
+        
+         intNum = Integer.parseInt(strNum);
+         System.out.println("strNum = " + strNum);
+        
+         intTotal = intTotal + intNum;
+         System.out.println("Total: "  + intTotal);
+      }
+      
+      
+    }
+    return intTotal;
+  }
 }
