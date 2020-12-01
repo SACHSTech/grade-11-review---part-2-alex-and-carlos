@@ -17,6 +17,11 @@ public class Main{
     strLong = Utility.longestWord("src/gr11review/part2/test.txt");
     System.out.println(strLong);
 
+    int n;
+    System.out.println("n");
+    n = Integer.parseInt(key.readLine());
+    Utility.diagonal(n);
+
     // int[] intNum;
     // int[] intOutput;
     int intCount;

@@ -212,4 +212,44 @@ public class Utility{
     Output.close();
   }
   
+  public static void diagonal(int n) throws IOException{
+  // Given an integer n, write a method diagonal(int n) that outputs to a text file diagonalOut.txt, a two-dimensional array of size (n×n) populated as follows, with a comma between each number:
+
+  // The positions on the minor diagonal (from the upper right to the lower left corner) receive 1 .
+  // The positions above this diagonal receive 0 .
+  // The positions below the diagonal receive 2 .
+
+  int[][] intDiagonal;
+  int intCount;
+  int intCount2;
+  int intLine = 0;
+
+  intDiagonal = new int[n][n];
+
+// column number start from furthest right
+  for(intCount = n - 1; intCount >= 0; intCount --){
+    // Row number start from top
+    for(intCount2 = 0; intCount2 < n; intCount2 ++){
+      intDiagonal[intLine][intCount] = 1;
+      if(intCount2 > intLine){
+        intDiagonal[intCount2][intCount] = 2;
+      }else if(intCount2 < intLine){
+        intDiagonal[intCount2][intCount] = 0;
+      }
+    }
+    intLine = intLine + 1;
+  }
+
+  PrintWriter Output = new PrintWriter(new FileWriter("src/gr11review/part2/diagonalOut.txt"));
+
+  for(intCount2 = 0; intCount2 < n; intCount2++){
+    for(intCount = 0; intCount < n; intCount++){
+      Output.print(intDiagonal[intCount2][intCount] + ", ");
+    }
+    Output.println("");
+  }
+
+  Output.close();
+
+  }
 }
