@@ -7,31 +7,46 @@ import org.graalvm.compiler.core.common.util.TypeWriter;
 public class Utility {
   public static int sumNumbers(String strWord) {
 
-     // here is what I'll do: 
-    // create a loop that read entire sentence, when it finds a char that is a int, it registers into string variable to create a strings of integers. Then it starts to loop again but begins at the last time it read, if it finds a integer char variable, it'll start to loop and register the char variables behind.
+    // Given a string, return the sum of the numbers appearing in the string, ignoring all other characters. A number is a series of 1 or more digit chars in a row. (Note: Character.isDigit(char) tests if a char is one of the chars '0', '1', .. '9'. Integer.parseInt(string) converts a string to an int.)
 
-    // I know, it's a pretty good idea, but it just don't work.
-
-    // I tried using 
-
-    // all of these didn't work just because the charAt is broke Aas Hecc
-  
     int intCount;
-    int inCount2;
+    int intCount2;
     int intLength;
-
-    String strSub1;
-    String strSub2;
-
-    char Char1;
-    char Char2;
+    char charSub;
+    char charSub2;
+    boolean isNum;
+    int intNum;
+    int intTotal;
+    String strNum;
 
     intLength = strWord.length();
-    System.out.print("There is " + intLength + " letters in this syntax");
+    intTotal = 0;
+    
+    for(intCount = 0; intCount < intLength; intCount++){
+      charSub = strWord.charTo(intCount);
+      
+      System.out.print(charSub);
 
-    Char1 = strWord.charAt(intLength - 1);
-    System.out.print(Char1);
-
+      if(Chracter.isDigit(charSub) == true){
+        strNum = charSub;
+        for (intCount2 = intCount; intCount2 < intLength; intCount2 ++ ) {
+          charSub2 = strWord.charTo(intCount2);
+          if (Character.isDigit(charSub2) == true){
+            strNum = strNum + charSub2;
+          }else{
+            break;
+          }
+        }
+        intNum = Integer.parseInt(strNum);
+        System.out.println(intNum);
+        
+        intTotal = intTotal + intNum;
+        System.out.println("Total: "  + intTotalotal);
+      }
+      
+      
+    }
+    return intTotal;
   }
   public static String alphaWord(String filenametxt) {
 
@@ -105,7 +120,7 @@ public class Utility {
     int intCombined = 0;
 
     for (intCount = 0; intArray != null; intCount++) {
-      intCombined = intCombined + num[intCount];
+      intCombined = intCombined + nums[intCount];
     }
 
     if (intCombined %2 != 0) {
@@ -114,55 +129,45 @@ public class Utility {
       return true;
     }
   }
-  public static void diagonal(int n) {
-    
-    /* Given an integer n, write a method diagonal(int n) that outputs to a text file diagonalOut.txt, a two-dimensional array of size (n×n) populated as follows, with a comma between each number: */
 
-    // The positions on the minor diagonal (from the upper right to the lower left corner) receive 1 .
-    // The positions above this diagonal receive 0 .
-    // The positions below the diagonal receive 2 .
+  public static void diagonal(int n) throws IOException{
+  // Given an integer n, write a method diagonal(int n) that outputs to a text file diagonalOut.txt, a two-dimensional array of size (n×n) populated as follows, with a comma between each number:
 
-    //Creat a for loop that create the first 
+  // The positions on the minor diagonal (from the upper right to the lower left corner) receive 1 .
+  // The positions above this diagonal receive 0 .
+  // The positions below the diagonal receive 2 .
 
-    int intArrayNum0;
-    int intArrayNum1;
-    int intArrayNum2;
-    int intCount1;
-    int intCount2;
-    String strZeros = "0, ";
-    String strOne = "1, ";
-    String strTwos = "2, ";
-    String strCombined = "";
+  int[][] intDiagonal;
+  int intCount;
+  int intCount2;
+  int intLine = 0;
 
-    PrintWriter print = new PrintWriter(new FileWriter("diagonalOut.txt", true));
+  intDiagonal = new int[n][n];
 
-    String[][] strNum = new String[n][0];
-
-          //Thinking that String [0][0] is 0001, AN0 - 1
-         // so [1][0] would be 0012, AN0 - 2
-        // [2][0] would be 0122, AN0 - 3
-       //Create the first loop just to read the entire array
-      // set each individual arrays with their combined string.
-
-    for (int intCount = 0; intCount < n; intCount++) {
-       for (intCount1 = 0; intCount < n; intCount++) {
-
-         intArrayNum0 = n - (intCount1 + 1);
-         intArrayNum2 = n - (intCount1 - 1);
-
-        for (intCount2 = 0; intCount < intArrayNum0; intCount2++){
-          strCombined = strCombined + strZeros;
-        }
-
-        strCombined = strCombined + strOne;
-
-        for (intCount2 = 0; intCount < intArrayNum2; intCount2++){
-          strCombined = strCombined + strTwos;
-        }
-        strCombined = strCombined.substring(0, n * 3 - 2);
+// column number start from furthest right
+  for(intCount = n - 1; intCount >= 0; intCount --){
+    // Row number start from top
+    for(intCount2 = 0; intCount2 < n; intCount2 ++){
+      intDiagonal[intLine][intCount] = 1;
+      if(intCount2 > intLine){
+        intDiagonal[intCount2][intCount] = 2;
+      }else if(intCount2 < intLine){
+        intDiagonal[intCount2][intCount] = 0;
       }
-      strNum[inCount][0] = strCombined;
-      print.println(strNum[intCount][0]);
     }
+    intLine = intLine + 1;
+  }
+
+  PrintWriter Output = new PrintWriter(new FileWriter("src/gr11review/part2/diagonalOut.txt"));
+
+  for(intCount2 = 0; intCount2 < n; intCount2++){
+    for(intCount = 0; intCount < n; intCount++){
+      Output.print(intDiagonal[intCount2][intCount] + ", ");
+    }
+    Output.println("");
+  }
+
+  Output.close();
+
   }
 }

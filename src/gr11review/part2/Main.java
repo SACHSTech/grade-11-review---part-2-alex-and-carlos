@@ -7,37 +7,26 @@ public class Main{
 
     BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 
-
-    String strOutput;
-
-    strOutput = Utility.alphaWord("src/gr11review/part2/words.txt");
-
     Utility.diagonal(4);
 
-    System.out.println(strOutput);
+    System.out.print("Input: ");
+    String strString = keyboard.readLine();
+
+    int intCombined = Utility.sumNumbers(strString);
+    System.out.print("Output: " + intCombined);
+
+    String strInputFiletxt = "words.txt";
+    Utility.alphaWord(strInputFiletxt);
 
     int[] intNumbers;
-    int intAlone;
-    int[] intReturn;
-    int intLength;
-    int intCount;
+    Boolean blnTrue;
 
-
-    intNumbers = new int[5];
-    intReturn = new int[5];
-
-    intNumbers[0] = 3;
-    intNumbers[1] = 1;
-    intNumbers[2] = 9;
-    intNumbers[3] = 5;
-    intNumbers[4] = 2;
+    blnTrue = Utility.notAlone(Numbers, value);
+    System.out.println(blnTrue);
 
     
-    intReturn = Utility.notAlone((new int[]{1,2,3}) , 2);
-      
-    for(intCount = 0; intCount < 3; intCount ++){
-      System.out.println(intReturn[intCount] + ", ");
-    }
+
+
 
   }
 }
