@@ -134,35 +134,35 @@ public class Utility {
     String strTwos = "2, ";
     String strCombined = "";
 
-    PrintWriter theout = new PrintWriter(new FileWriter("diagonalOut.txt", true));
+    PrintWriter print = new PrintWriter(new FileWriter("diagonalOut.txt", true));
 
     String[][] strNum = new String[n][0];
 
-        //Thinking that String [0][0] is 0001, AN0 - 1
-       // so [1][0] would be 0012, AN0 - 2
-      // [2][0] would be 0122, AN0 - 3
-     //Create the first loop just to read the entire array
-    // set each individual arrays with their combined string.
+          //Thinking that String [0][0] is 0001, AN0 - 1
+         // so [1][0] would be 0012, AN0 - 2
+        // [2][0] would be 0122, AN0 - 3
+       //Create the first loop just to read the entire array
+      // set each individual arrays with their combined string.
 
-      for (int intCount = 0; intCount < n; intCount++) {
-        for (intCount1 = 0; intCount < n; intCount++) {
+    for (int intCount = 0; intCount < n; intCount++) {
+       for (intCount1 = 0; intCount < n; intCount++) {
 
-          intArrayNum0 = n - (intCount1 + 1);
-          intArrayNum2 = n - (intCount1 - 1);
+         intArrayNum0 = n - (intCount1 + 1);
+         intArrayNum2 = n - (intCount1 - 1);
 
-          for (intCount2 = 0; intCount < intArrayNum0; intCount2++){
-            strCombined = strCombined + strZeros;
-          }
-
-          strCombined = strCombined + strOne;
-
-          for (intCount2 = 0; intCount < intArrayNum2; intCount2++){
-              strCombined = strCombined + strTwos;
-            }
-          }
+        for (intCount2 = 0; intCount < intArrayNum0; intCount2++){
+          strCombined = strCombined + strZeros;
         }
-        strNum[inCount][0] = strCombined;
+
+        strCombined = strCombined + strOne;
+
+        for (intCount2 = 0; intCount < intArrayNum2; intCount2++){
+          strCombined = strCombined + strTwos;
+        }
+        strCombined = strCombined.substring(0, n * 3 - 2);
       }
+      strNum[inCount][0] = strCombined;
+      print.println(strNum[intCount][0]);
     }
   }
 }

@@ -12,6 +12,8 @@ public class Main{
 
     strOutput = Utility.alphaWord("src/gr11review/part2/words.txt");
 
+    Utility.diagonal(4);
+
     System.out.println(strOutput);
 
     int[] intNumbers;
