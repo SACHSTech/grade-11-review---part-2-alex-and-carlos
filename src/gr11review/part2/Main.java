@@ -7,16 +7,12 @@ public class Main{
 
     BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 
-    // int intCombinedNum;
-   // String strString;
 
+    String strOutput;
 
+    strOutput = Utility.alphaWord("src/gr11review/part2/words.txt");
 
-
-    // use utility.sumNumbers method
-   //intCombinedNum = Utility.sumNumbers(strString);
-
-    //System.out.println("Output: " + intCombinedNum);
+    System.out.println(strOutput);
 
     int[] intNumbers;
     int intAlone;
@@ -24,23 +20,20 @@ public class Main{
     int intLength;
     int intCount;
 
-    System.out.println("How Long");
-    intLength = Integer.parseInt(keyboard.readLine());
-    System.out.println("");
 
-    intNumbers = new int[intLength];
-    intReturn = new int[intLength];
+    intNumbers = new int[5];
+    intReturn = new int[5];
 
-    for(intCount = 0; intCount < intLength; intCount++){
-      System.out.println("Number");
-      intNumbers[intCount] = Integer.parseInt(keyboard.readLine());
-    }
+    intNumbers[0] = 3;
+    intNumbers[1] = 1;
+    intNumbers[2] = 9;
+    intNumbers[3] = 5;
+    intNumbers[4] = 2;
 
-    System.out.println("Alone?");
-    intAlone = Integer.parseInt(keyboard.readLine());
-
-    for(intCount = 0; intCount < intLength; intCount++){
-      intReturn[intCount] = Utility.notAlone(intNumbers[] , intAlone);
+    
+    intReturn = Utility.notAlone((new int[]{1,2,3}) , 2);
+      
+    for(intCount = 0; intCount < 3; intCount ++){
       System.out.println(intReturn[intCount] + ", ");
     }
 

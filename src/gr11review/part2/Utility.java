@@ -1,19 +1,20 @@
 package gr11review.part2;
 
-import java.io;
-import java.io.BufferedReader;
+import java.io.*;
 
 import org.graalvm.compiler.core.common.util.TypeWriter;
 
 public class Utility {
   public static int sumNumbers(String strWord) {
 
-    // here is what I'll do: 
+     // here is what I'll do: 
     // create a loop that read entire sentence, when it finds a char that is a int, it registers into string variable to create a strings of integers. Then it starts to loop again but begins at the last time it read, if it finds a integer char variable, it'll start to loop and register the char variables behind.
 
     // I know, it's a pretty good idea, but it just don't work.
 
-    // all of these didn't work just because the charAt is broke AH
+    // I tried using 
+
+    // all of these didn't work just because the charAt is broke Aas Hecc
   
     int intCount;
     int inCount2;
@@ -28,15 +29,9 @@ public class Utility {
     intLength = strWord.length();
     System.out.print("There is " + intLength + " letters in this syntax");
 
-    for (intCount = 0; intCount < intLength; intCount++){
-      
-      strSub1 = strWord.substring(intCount , intCount + 1); 
-      
-      Char1 = strSub1.charAt(intCount);
-      System.out.print(Char1);
+    Char1 = strWord.charAt(intLength - 1);
+    System.out.print(Char1);
 
-      
-    }
   }
   public static String alphaWord(String filenametxt) {
 
@@ -44,28 +39,28 @@ public class Utility {
   
     // I bring the meme into my work, what is wrong with me.
 
-    int intLineNum = 0;
+    BufferedReader fileIn = new BufferedReader(new FileReader(filenametxt));
+
+    String strWord;
+    String strAlpha;
     int intCount;
+    int intCheck;
 
-    BufferedReader fileIn = new BufferedReader(new FileReader("src/gr11review/part2/words.txt"));
+    intLength = 0;
+    strAlpha = "z";
+    strWord = "";
 
-    while (!fileIn.eof()) {
-
-      intLineNum++;
-
+    while(strWord != null){
+      strWord = fileIn.readLine();
+      intCheck = strAlpha.compareTo(strWord);
+      if(intCheck < 0){
+        strAlpha = strWord;
+      }
     }
 
     fileIn.close();
-    fileIn = new BufferedReader(new FileReader("src/gr11review/part2/words.txt"));
 
-    for (intCount = 1; intCount < intLineNum; intCount++) {
-
-      String strLetter = FileIn.readLine();
-      charLetter = strLetter.charAt(intCount);
-
-    }
-
-    return "Happy";
+    return strAlpha;
   }
   public static int[] notAlone(int[] nums, int value) {
 
@@ -126,15 +121,48 @@ public class Utility {
     // The positions on the minor diagonal (from the upper right to the lower left corner) receive 1 .
     // The positions above this diagonal receive 0 .
     // The positions below the diagonal receive 2 .
-    // Signature public static void diagonal(int n) 
+
+    //Creat a for loop that create the first 
+
+    int intArrayNum0;
+    int intArrayNum1;
+    int intArrayNum2;
+    int intCount1;
+    int intCount2;
+    String strZeros = "0, ";
+    String strOne = "1, ";
+    String strTwos = "2, ";
+    String strCombined = "";
 
     PrintWriter theout = new PrintWriter(new FileWriter("diagonalOut.txt", true));
 
-    String[][] strNum;
+    String[][] strNum = new String[n][0];
 
-    strNum
-    
+        //Thinking that String [0][0] is 0001, AN0 - 1
+       // so [1][0] would be 0012, AN0 - 2
+      // [2][0] would be 0122, AN0 - 3
+     //Create the first loop just to read the entire array
+    // set each individual arrays with their combined string.
 
+      for (int intCount = 0; intCount < n; intCount++) {
+        for (intCount1 = 0; intCount < n; intCount++) {
+
+          intArrayNum0 = n - (intCount1 + 1);
+          intArrayNum2 = n - (intCount1 - 1);
+
+          for (intCount2 = 0; intCount < intArrayNum0; intCount2++){
+            strCombined = strCombined + strZeros;
+          }
+
+          strCombined = strCombined + strOne;
+
+          for (intCount2 = 0; intCount < intArrayNum2; intCount2++){
+              strCombined = strCombined + strTwos;
+            }
+          }
+        }
+        strNum[inCount][0] = strCombined;
+      }
+    }
   }
-  
 }
